@@ -81,7 +81,11 @@ $(".buttons").on("click", ".searchButton", function () {
 
                     // Giving the image tag an src attribute of a proprty pulled off the
                     // result item
-                    gifImage.attr("src", results[i].images.fixed_height.url);
+                    gifImage.attr("src", results[i].images.fixed_height_still.url);
+                    gifImage.attr("data-still", results[i].images.fixed_height_still.url);
+                    gifImage.attr("data-animate", results[i].images.fixed_height.url);
+                    gifImage.attr("data-state", "still");
+                    gifImage.addClass("gif");
 
                     // Appending the paragraph and personImage we created to the "gifDiv" div we created
                     gifDiv.append(p);
@@ -92,4 +96,17 @@ $(".buttons").on("click", ".searchButton", function () {
                 }
             }
         })
+});
+// click event to animate or make gifs still
+$(".gifs").on("click", ".gif", function () {
+    // reference the state of the gif
+    var state = $(this).attr("data-state");
+    // conditional statement to change the state to the opposite state, (animate or still)
+    if (state === "still") {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+    } else {
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-state", "still");
+    }
 });

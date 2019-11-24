@@ -5,3 +5,8 @@
 .buttons {
     margin: 20px 0px 20px;
 }
+
+.searchButton {
+    padding: 20px 20px 20px 20px;
+    margin: 2px;
+}

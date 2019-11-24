@@ -45,6 +45,7 @@ $("#submit").on("click", function () {
 
 // create a button event listener that will grab gifs from giphy and append those to the page.
 $(".buttons").on("click", ".searchButton", function () {
+    event.preventDefault();
     // reference the value of the id attribute of the clicked button
     var search = $(this).attr("id");
     //create the url

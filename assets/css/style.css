@@ -1,3 +1,14 @@
+body {
+    background-color: black;
+    background-image: url("../images/Movietime_Cinemas_Logo1.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.container {
+    max-width: 1000px;
+}
 .addButtons {
     width: 300px;
 }
@@ -9,4 +20,15 @@
 .searchButton {
     padding: 20px 20px 20px 20px;
     margin: 2px;
+}
+label {
+    color: white;
+}
+
+#submit {
+    margin: 20px 0px 0px 0px;
+}
+
+.gifs {
+    color: white;
 }

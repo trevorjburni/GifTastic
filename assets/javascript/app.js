@@ -27,9 +27,7 @@ for (var i = 0; i < topics.length; i++) {
 
 $("#submit").on("click", function () {
     var newSearch = $("#new-gif").val().trim().toLowerCase();
-    console.log(newSearch);
     topics.push(newSearch);
-    console.log(topics);
     // reference to the .buttons div
     buttonDiv = $(".buttons");
 
@@ -48,7 +46,6 @@ $("#submit").on("click", function () {
 // create a button event listener that will grab gifs from giphy and append those to the page.
 $(".buttons").on("click", ".searchButton", function () {
     // reference the value of the id attribute of the clicked button
-    console.log("search started");
     var search = $(this).attr("id");
     //create the url
     var giphyUrl = "https://api.giphy.com/v1/gifs/search?api_key=" + apiKey + "&q=" + search + "&limit=10";
@@ -60,7 +57,6 @@ $(".buttons").on("click", ".searchButton", function () {
         //when we get the data run the following code
         .then(function (response) {
             var results = response.data;
-            console.log(results);
 
             // loop over all the results
             for (var i = 0; i < results.length; i++) {

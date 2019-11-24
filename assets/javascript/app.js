@@ -1,6 +1,6 @@
 // Before we can do anything we need to create a string of topics
 
-var topics = ["star wars", "harry potter", "lord of the rings", "spongebob"];
+var topics = ["star wars", "harry potter", "lord of the rings", "spongebob", "top gun"];
 // giphy api key
 var apiKey = "EJ5KCZEq51nGGlNz0ACZlMruaXfNN8ae";
 
@@ -14,17 +14,41 @@ for (var i = 0; i < topics.length; i++) {
 
     // add text and attributes to the new button
     newButton.text(topics[i]);
-    newButton.attr("class", "searchButton")
+    newButton.attr("class", "searchButton");
     newButton.attr("id", topics[i]);
 
     // add the new button to the .buttons div
     buttonDiv.append(newButton);
 };
 
-// create a button event listener that will grab gifs from giphy and append those to the page.
 
-$(".searchButton").on("click", function () {
+// create a button event listener that will create a new button with what is specified in the text box.
+
+
+$("#submit").on("click", function () {
+    var newSearch = $("#new-gif").val().trim().toLowerCase();
+    console.log(newSearch);
+    topics.push(newSearch);
+    console.log(topics);
+    // reference to the .buttons div
+    buttonDiv = $(".buttons");
+
+    // reference to a new button tag
+    newButton = $("<button>");
+
+    // add text and attributes to the new button
+    newButton.text(newSearch);
+    newButton.attr("class", "searchButton");
+    newButton.attr("id", newSearch);
+
+    // add the new button to the .buttons div
+    buttonDiv.append(newButton);
+});
+
+// create a button event listener that will grab gifs from giphy and append those to the page.
+$(".buttons").on("click", ".searchButton", function () {
     // reference the value of the id attribute of the clicked button
+    console.log("search started");
     var search = $(this).attr("id");
     //create the url
     var giphyUrl = "https://api.giphy.com/v1/gifs/search?api_key=" + apiKey + "&q=" + search + "&limit=10";
@@ -69,5 +93,3 @@ $(".searchButton").on("click", function () {
             }
         })
 });
-
-// create a function that will use ajax to obtain data from
